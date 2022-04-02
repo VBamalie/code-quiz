@@ -1,15 +1,34 @@
 //dom traversal variables
-var highscore = document.querySelector(".highscore");//working
-var timer = document.querySelector(".timer");//working
+var highscore = document.querySelector(".highscore");
+var timerEl = document.querySelector(".timer");
 var question = document.querySelector(".question");
-var multipleChoice = document.querySelector(".multipleChoice");//working
+var multipleChoice = document.querySelector(".multiple-choice");
+var answerEval = document.querySelector(".answer-eval")
 //not sure if this startQuiz is working
-var startQuiz = document.querySelector(".startQuiz");
+var startQuiz = document.querySelector(".start-quiz");
 
+//GLOBAL VARIABLES
+var timer = 5
 
 
 //need a start quiz function
+
 //start quiz starts a timer
+function setTime() {
+    // Sets interval in variable
+    var timerInterval = setInterval(function() {
+      timer--;
+      timerEl.textContent = timer;
+  
+      if(timer === 0) {
+        // Stops execution of action at set interval
+        clearInterval(timerInterval);
+        // Calls function to create and append image
+      }
+    }, 1000);
+  }
+
+setTime()
 //delete the html for the text already in the html section
 //start a function for asking the first question 
 //then the second question
