@@ -5,7 +5,6 @@ var questionText = document.querySelector(".question");
 var multipleChoice = document.querySelector(".multiple-choice");
 var answerEval = document.querySelector(".answer-eval")
 var quizButton = document.querySelector("#start-quiz");
-
 //GLOBAL VARIABLES
 var timer = 75
 var gameOver = false
@@ -84,8 +83,25 @@ function setTime() {
 // or if correct just goes to the next question
 
 
-//second questions works similar as first question
-
+//ask question function that erases previous text and asks the newest thing
+function askQuestion( question , optionA, optionB, optionC , optionD){
+    //erase previous text
+    multipleChoice.innerHTML = "";
+    //asks the question in the h1
+    questionText.textContent = question;
+    makeQuestions(optionA);
+    makeQuestions(optionB);
+    makeQuestions(optionC);
+    makeQuestions(optionD);
+//creates child elements in the ul 
+    function makeQuestions(option){
+        var li = document.createElement("li");
+        var button = document.createElement("button");
+        button.textContent = option
+        multipleChoice.appendChild(li)
+        li.appendChild(button);
+    }
+}
 
 
 //start quiz function
@@ -93,11 +109,11 @@ quizButton.addEventListener("click" , ()=> {
     setTime();
     startQuiz()
 });
-
 function startQuiz(){ 
-    questionText.textContent = question1.question
-
+    askQuestion( question1.question , question1.optionA , question1.optionB , question1.optionC , question1.optionD);
+    //need to make a way to selct each of the button elements and the add an event listener to it
 }
+
 //check time
 //first question
 //check time function
